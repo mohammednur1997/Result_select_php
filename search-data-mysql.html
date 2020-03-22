@@ -1,0 +1,77 @@
+	<html>
+	<head>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script>
+	function showUser(str) {
+		if (str == "") {
+			document.getElementById("txtHint").innerHTML = "";
+			return;
+		} else {
+			if (window.XMLHttpRequest) {
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				// code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET","getuser.php?q="+str,true);
+			xmlhttp.send();
+		}
+	}
+	</script>
+	<style>
+        .select{
+            background-image: url(image/8144_cool_sunrise.jpg);
+            padding: 289px 0;
+        }
+        
+        button, select {
+        text-transform: none;
+        padding: 6px 32px;
+        border-radius: 3px;
+        }
+        
+        
+        
+        
+        </style>
+</head>
+	<body>
+            <section class="select">
+                <div class="container">
+                    <div class="raw">
+                        <div class="col-md-12">
+                            <div class="select_data text-center">
+                                   <form>
+                                    <select name="users" onchange="showUser(this.value)">
+                                      <option value="">Select a person:</option>
+                                      <option value="1">Nur</option>
+                                      <option value="2">Atif</option>
+                                      <option value="12">Mamun</option>
+                                      <option value="15">Md</option>
+                                      <option value="17">Nok</option>
+                                      <option value="19">Ksl</option>
+                                      <option value="20">Asad</option>
+                                      <option value="21">Osman</option>
+                                      <option value="23">Nur</option>
+                                      <option value="24">Mohammed</option>
+                                      <option value="25">Khelada</option>
+                                      <option value="26">Nur</option>
+                                      <option value="23">Mohammed</option>
+                                      <option value="26">Zeeshan</option>
+                                      </select>
+                                    </form>
+                                    <br>
+                                    <div id="txtHint"><b style="color: white;">Person info will be listed here...</b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+	</body>
+	</html>
